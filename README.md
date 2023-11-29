@@ -5,10 +5,10 @@
 ## some functions learned in number theory or others nice libs
 
 - calculus
--- MDC
--- MMC
--- FATORIAL
--- TEOREMA DE WILSON
+- - MDC
+- - MMC
+- - FATORIAL
+- - TEOREMA DE WILSON
 
 ## Command to compile
 
