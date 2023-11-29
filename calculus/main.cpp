@@ -81,7 +81,13 @@ int fermat(int n){
 	return  ( (potencia - (-1)) % n == 0 ) ? 0 : 1; 
 
 }
-
+static PyObject* fermat(PyObject* self, PyObject* args){
+	int n;
+	if(!PyArg_ParseTuple(args, "i", &n)){
+		return NULL;
+	}
+	return Py_BuildValue("i", fermat(n));
+}
 
 
 // teorema de wilson para verificação de primos
@@ -113,6 +119,7 @@ static PyMethodDef calculus_methods[] = {
 	{"mmc", mmc, METH_VARARGS, "MMC of two numbers"},
 	{"fatorial", fatorial, METH_VARARGS, "fatorial of one number"},
 	{"wilson", wilson, METH_VARARGS, "teorema de wilson to test primes"},
+	{"fermat", fermat, METH_VARARGS, "teorema de fermat to test primes"},
 	{NULL, NULL, 0, NULL}
 
 };
