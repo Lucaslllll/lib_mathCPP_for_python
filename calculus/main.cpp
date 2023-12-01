@@ -4,6 +4,28 @@
 #include <math.h>
 
 
+
+int potencia(int base, int expoente){
+	int i = 0;
+	int resultado = 1;
+	while(expoente > i){
+		resultado = resultado * base;
+		i++;
+	}
+
+	return resultado;
+}
+static PyObject* potencia(PyObject* self, PyObject* args){
+	int base, expoente;
+	if(!PyArg_ParseTuple(args, "ii", &base, &expoente)){
+		return NULL;
+	}
+
+	return Py_BuildValue("i", potencia(base, expoente));
+}
+
+
+
 int mdc(int a, int b){
 	int resto;
 	
@@ -44,6 +66,24 @@ static PyObject* mmc(PyObject* self, PyObject* args){
 	}
 
 	return Py_BuildValue("i", mmc(a, b));
+}
+
+
+
+// definição de congruência
+// a ≡ b (mod n)
+// 0 para verdadeiro e 1 para falso
+int teste_de_congruencias(int a, int b, int n){
+	int diferenca = a - (b);
+
+	return (diferenca % n == 0) ? 0 : 1;
+}
+static PyObject* teste_de_congruencias(PyObject* self, PyObject* args){
+	int a, b, n;
+	if(!PyArg_ParseTuple(args, "iii", &a, &b, &n)){
+		return NULL;
+	}
+	return Py_BuildValue("i", teste_de_congruencias(a, b, n));
 }
 
 
@@ -112,14 +152,22 @@ static PyObject* wilson(PyObject* self, PyObject* args){
 }
 
 
+
+
+
+
+
+
 // configuration
 
 static PyMethodDef calculus_methods[] = {
+	{"potencia", potencia, METH_VARARGS, "Power of a number in a base"},
 	{"mdc", mdc, METH_VARARGS, "MDC of two numbers"},
 	{"mmc", mmc, METH_VARARGS, "MMC of two numbers"},
+	{"teste_de_congruencias", teste_de_congruencias, METH_VARARGS, "test of congruencia"},
 	{"fatorial", fatorial, METH_VARARGS, "fatorial of one number"},
-	{"wilson", wilson, METH_VARARGS, "teorema de wilson to test primes"},
-	{"fermat", fermat, METH_VARARGS, "teorema de fermat to test primes"},
+	{"wilson", wilson, METH_VARARGS, "teorema de wilson to test numbers primes"},
+	{"fermat", fermat, METH_VARARGS, "teorema de fermat to test numbers primes"},
 	{NULL, NULL, 0, NULL}
 
 };

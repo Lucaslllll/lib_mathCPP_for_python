@@ -15,3 +15,8 @@ if calculus.wilson(p) == 0:
 else:
 	print("não é primo")
 	
+
+print(calculus.potencia(2, 4))
+
+
+print(calculus.teste_de_congruencias(5, -3, 7))
