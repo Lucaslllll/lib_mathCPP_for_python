@@ -1,7 +1,6 @@
 #include <Python.h>
 #include <stdlib.h>// necessário p/ as funções rand() e srand()
 #include<time.h>// necessário p/ função time()
-#include <math.h>
 
 
 
@@ -115,10 +114,10 @@ int fermat(int n){
 	int a = rand() % (n-1);
 
 	// a^n-1
-	int potencia = (int) pow(a, ( n-1 ));
+	int pow = potencia(a, ( n-1 ));
 
 			// n | a^n-1 - 1
-	return  ( (potencia - (-1)) % n == 0 ) ? 0 : 1; 
+	return  ( (pow - (-1)) % n == 0 ) ? 0 : 1; 
 
 }
 static PyObject* fermat(PyObject* self, PyObject* args){
@@ -158,6 +157,24 @@ static PyObject* wilson(PyObject* self, PyObject* args){
 
 
 
+
+// sobre v1
+// const char* sobre(){
+// 	const char* mensagem = "Minha biblioteca C para python3, Lucaslllll";
+
+// 	return mensagem;
+// }
+// static PyObject* sobre(PyObject* self, PyObject* args) {
+//     return Py_BuildValue("s", sobre());
+// }
+// sobre v2, gasta menos recursos ;)
+static PyObject* sobre(PyObject* self, PyObject* args) {
+    const char* msg = "Minha biblioteca C para python3, Lucaslllll";
+    return Py_BuildValue("s", msg);
+}
+
+
+
 // configuration
 
 static PyMethodDef calculus_methods[] = {
@@ -168,6 +185,7 @@ static PyMethodDef calculus_methods[] = {
 	{"fatorial", fatorial, METH_VARARGS, "fatorial of one number"},
 	{"wilson", wilson, METH_VARARGS, "teorema de wilson to test numbers primes"},
 	{"fermat", fermat, METH_VARARGS, "teorema de fermat to test numbers primes"},
+	{"sobre", sobre, METH_NOARGS, "Retorna uma string do C para Python"},
 	{NULL, NULL, 0, NULL}
 
 };
