@@ -54,12 +54,24 @@ static PyObject* gerador_cpf(PyObject *self, PyObject *args) {
 
 
     // Cria uma tupla Python para armazenar os dígitos do CPF
-    PyObject* cpf_tuple = PyTuple_New(11);
-    for (int i = 0; i < 11; ++i) {
-        PyTuple_SetItem( cpf_tuple, i, PyLong_FromLong(cpf.numeracao[i]) );
-    }
+    PyObject* cpf_dict = PyDict_New();
+    char numeracao_string[16];
+    numeracao_string[0] = '\0'; // iniciando e se livrando do lixo
 
-    return cpf_tuple;
+    for (int i = 0; i < 11; ++i) {
+    	// sprintf(numeracao_string, "%d", cpf.numeracao[i]); não dá para concatenar com sprintf
+    	snprintf(numeracao_string + strlen(numeracao_string), sizeof(numeracao_string) - strlen(numeracao_string), "%d", cpf.numeracao[i]);
+  
+    }
+    PyObject* key = PyUnicode_FromString("numeracao");
+    PyObject* value = PyUnicode_FromFormat("%s", numeracao_string);
+    
+    PyDict_SetItem(cpf_dict, key, value);
+
+    Py_DECREF(key);
+    Py_DECREF(value);
+
+    return cpf_dict;
 }
 
 

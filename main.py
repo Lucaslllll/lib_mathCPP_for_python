@@ -26,8 +26,8 @@ import calculus
 import utils
 
 cpf = utils.gerador_cpf()
-print("CPF gerado: ")
-n = ''
-for c in cpf:
-	n += str(c)
-print(n)
+print("CPF gerado: ", cpf)
+# n = ''
+# for c in cpf:
+# 	n += str(c)
+# print(n)
