@@ -10,6 +10,13 @@
 - - FATORIAL
 - - TEOREMA DE WILSON
 
+- ordenacao
+- - quick_sort
+
+- utils
+- - gerador_cpf
+
 ## Command to compile
 
-- g++ -shared -o calculus.so -fpic calculus/main.cpp -I /usr/include/python3.<version in your pc>
+- {name} = utils or {name} = ordenacao or {name} = calculus
+- - g++ -shared -o {name}.so -fpic {name}/main.cpp -I /usr/include/python3.<version in your pc>
