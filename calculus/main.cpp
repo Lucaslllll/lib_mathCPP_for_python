@@ -1,6 +1,6 @@
 #include <Python.h>
 #include <stdlib.h>// necessário p/ as funções rand() e srand()
-#include<time.h>// necessário p/ função time()
+#include <time.h>// necessário p/ função time()
 
 
 
@@ -149,7 +149,6 @@ static PyObject* wilson(PyObject* self, PyObject* args){
 	}
 	return Py_BuildValue("i", wilson(p));
 }
-
 
 
 

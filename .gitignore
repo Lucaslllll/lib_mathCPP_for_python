@@ -1,2 +1,3 @@
 *.so
 *.swp
+/some_tests

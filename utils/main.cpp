@@ -71,8 +71,11 @@ static PyObject* gerador_cpf(PyObject *self, PyObject *args) {
     Py_DECREF(key);
     Py_DECREF(value);
 
+    // não liberar cpf_dict, pois ele é o retorno
     return cpf_dict;
 }
+
+
 
 
 

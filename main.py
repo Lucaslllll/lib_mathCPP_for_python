@@ -1,4 +1,5 @@
 import calculus 
+import ordenacao
 
 # a = 7; b = 22
 
@@ -23,11 +24,16 @@ import calculus
 
 
 
-import utils
+# import utils
 
-cpf = utils.gerador_cpf()
-print("CPF gerado: ", cpf)
+# cpf = utils.gerador_cpf()
+# print("CPF gerado: ", cpf)
 # n = ''
 # for c in cpf:
 # 	n += str(c)
 # print(n)
+
+# print(calculus.potencia(3,7))
+
+a = ordenacao.quick_sort([1,5,-2], 0, 3)
+print(a)
